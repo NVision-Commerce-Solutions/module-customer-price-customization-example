@@ -32,16 +32,16 @@ class CustomizePriceData
      */
     public function afterBuild(PriceDataBuilder $subject, array $result, array $responseItem): array
     {
-//        $storeId = $this->storeManager->getStore()->getId();
-//
-//        $acadonLength = $this->getAttributeValue($responseItem['productId'], 'acadon_length', $storeId);
-//        $acadonDiameter = $this->getAttributeValue($responseItem['productId'], 'acadon_diameter', $storeId);
-//        $acadonWidth = $this->getAttributeValue($responseItem['productId'], 'acadon_width', $storeId);
-//        $acadonThickness = $this->getAttributeValue($responseItem['productId'], 'acadon_thickness', $storeId);
-//        $result['price'] *= $acadonLength * $acadonDiameter * $acadonWidth * $acadonThickness;
-//        if ($this->config->useSpecialPrice()) {
-//            $result['special_price'] *= $acadonLength * $acadonDiameter * $acadonWidth * $acadonThickness;
-//        }
+        $storeId = $this->storeManager->getStore()->getId();
+
+        $acadonLength = $this->getAttributeValue($responseItem['productId'], 'acadon_length', $storeId);
+        $acadonDiameter = $this->getAttributeValue($responseItem['productId'], 'acadon_diameter', $storeId);
+        $acadonWidth = $this->getAttributeValue($responseItem['productId'], 'acadon_width', $storeId);
+        $acadonThickness = $this->getAttributeValue($responseItem['productId'], 'acadon_thickness', $storeId);
+        $result['price'] *= $acadonLength * $acadonDiameter * $acadonWidth * $acadonThickness;
+        if ($this->config->useSpecialPrice()) {
+            $result['special_price'] *= $acadonLength * $acadonDiameter * $acadonWidth * $acadonThickness;
+        }
 
         return $result;
     }

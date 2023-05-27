@@ -43,6 +43,11 @@ class CustomizePriceData
             $result['special_price'] *= $acadonLength * $acadonDiameter * $acadonWidth * $acadonThickness;
         }
 
+        foreach ($result['tier_prices'] as $key => $tierPrice) {
+            $tierPrice['price'] *= $acadonLength * $acadonDiameter * $acadonWidth * $acadonThickness;
+            $result['tier_prices'][$key] = $tierPrice;
+        }
+
         return $result;
     }
 
